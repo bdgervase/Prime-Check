@@ -1,0 +1,84 @@
+<html>
+
+<head>
+<title>Prime value graph</title>
+
+
+<script type="text/javascript" src="https://d14to6y4nub5k1.cloudfront.net/local/jquery.min.js"></script>
+<script type="text/javascript" src="https://d14to6y4nub5k1.cloudfront.net/lib/codehs/library_live.js"></script>
+
+
+<style>
+canvas{
+    border: 1px solid black;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Prime value graph</h1>
+
+<div id="user-code" style="display:none;">
+var RANGE = 10000;
+var data = [];
+
+
+function start() {
+    
+    for (var i = 0; i <= RANGE; i+=10) {
+       var primeList = [];
+       for (var k = 1; k < i; k++){
+          if (primeTest(k)) {
+            primeList.push(k); 
+          }
+        }
+        data.push([i, primeList.length]);
+        dataPlot(i,primeList.length);
+    }
+
+    println("After the first " + data[data.length-1][0] + 
+        " intgers,there are exactly " + data[data.length-1][1] + " prime numbers");
+    
+    
+}
+
+function dataPlot(x,y) {
+    xSpace = getWidth()/(RANGE);
+    ySpace = getHeight()/(RANGE/5);
+    
+    dataPoint = new Circle(2);
+    dataPoint.setPosition(x*xSpace, getHeight()-(y*ySpace));
+    add(dataPoint);
+}
+
+
+function primeTest(p) {
+    for(var i = 2; i <= Math.sqrt(p); i++){
+        if (p % i == 0) {
+            return false;
+            break;
+        }
+    }
+    
+    return true;
+}
+
+</div>
+
+<canvas
+width="400"
+height="500"
+class="codehs-editor-canvas"></canvas>
+
+<script>
+var g = new CodeHSGraphics({
+    canvas: $('.codehs-editor-canvas')
+});
+// run test # here.
+g.runCode($("#user-code").text());
+
+</script>
+
+</body>
+</html>
