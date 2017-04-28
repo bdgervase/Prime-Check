@@ -1,25 +1,4 @@
-<html>
 
-<head>
-<title>Prime value graph</title>
-
-
-<script type="text/javascript" src="https://d14to6y4nub5k1.cloudfront.net/local/jquery.min.js"></script>
-<script type="text/javascript" src="https://d14to6y4nub5k1.cloudfront.net/lib/codehs/library_live.js"></script>
-
-
-<style>
-canvas{
-    border: 1px solid black;
-}
-</style>
-
-</head>
-
-<body>
-<h1>Prime value graph</h1>
-
-<div id="user-code" style="display:none;">
 var RANGE = 10000;
 var data = [];
 
@@ -64,21 +43,3 @@ function primeTest(p) {
     return true;
 }
 
-</div>
-
-<canvas
-width="400"
-height="500"
-class="codehs-editor-canvas"></canvas>
-
-<script>
-var g = new CodeHSGraphics({
-    canvas: $('.codehs-editor-canvas')
-});
-// run test # here.
-g.runCode($("#user-code").text());
-
-</script>
-
-</body>
-</html>
